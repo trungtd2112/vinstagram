@@ -13,6 +13,9 @@ const validation = (values) => {
     if(values.repassword !== values.password){
         errors.repassword = "password not match"
     }
+    if(values.image && !values.image.match(/\.(jpg|jpeg|png|gif)$/) ) {
+        errors.image = "Please select valid image"
+    }
     return errors;
 };
 export default validation;

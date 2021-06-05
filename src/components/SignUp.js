@@ -7,6 +7,7 @@ const SignUp = () => {
         email: "",
         password: "",
         repassword: "",
+        image: "",
 
     });
     const [errors, setErrors] = useState({});
@@ -67,6 +68,19 @@ const SignUp = () => {
                             {errors.password && <p className="error">{errors.password}</p>}
                             {errors.repassword && <p className="error">{errors.repassword}</p>}
                         </div>
+
+                        <div className="email">
+                            <label className="label">イメージ</label>
+                            <input
+                                className="input"   
+                                type="file" 
+                                name="image"
+                                value={values.image} 
+                                onChange={handleChange}
+                            />
+                            {errors.image && <p className="error">{errors.image}</p>}
+                        </div>
+
                         <div>
                             <button className="submit" onClick={handleForm}>
                                 サインアップ 

@@ -55,7 +55,7 @@ const SignUp = () => {
                             />
                             {errors.password && <p className="error">{errors.password}</p>}
                         </div>
-                        <div className="email">
+                        <div className="password">
                             <input type="checkbox" name="account" value="Bike"></input>
                             <label for="account"> アカウントを覚える</label><br></br>
                         </div>
