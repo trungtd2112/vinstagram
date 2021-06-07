@@ -82,3 +82,30 @@ button:active {
   right: 30px;
   top: 30px;
 }
+.image {
+  height: 50px;
+  width: 50px;
+  border-radius: 25px;
+  margin-right: 20px;
+}
+.container1 {
+  margin-top: 100px;
+  margin-left: 100px;
+  /* width: 500px; */
+  min-height: 400px;
+}
+.header_content {
+  display: flex;
+  flex-direction: row;
+  
+}
+.imagePost {
+  height: 200px; 
+  width: 200px; 
+}
+.text_content {
+  text-align: left;
+  /* justify-content: center; */
+}
+
+
