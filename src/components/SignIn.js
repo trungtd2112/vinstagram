@@ -21,7 +21,7 @@ const SignUp = () => {
         })
     }
     return (
-        <div className="container">
+        <div className="container1">
             <div>
                 {/* <a className="buttonRedireact" href="">Sign Up</a> */}
                 <Link to={PathString.SignUp} className="buttonRedireact">Sign Up</Link>
