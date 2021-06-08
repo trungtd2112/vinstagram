@@ -22,10 +22,10 @@ const SignUp = () => {
         })
     }
     return (
-        <div className="container">
+        <div className="container1">
             <div>
                 {/* <a className="buttonRedireact" href="">Login</a> */}
-                <Link to={PathString.SignIn} className="buttonRedireact">Sign In</Link>
+                <Link to={PathString.SignIn} className="buttonRedireact">サインイン</Link>
             </div>
             <div className="content">
                 <div className="app-wrapper">
