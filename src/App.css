@@ -1,84 +1,84 @@
 * {
-  margin: 0;
-  padding: 0;
+	margin: 0;
+	padding: 0;
 }
 .container1 {
-  background:  #cccccc;
-  width: 100%;
-  min-height: 100vh;
+	background: #cccccc;
+	width: 100%;
+	min-height: 100vh;
 }
 .content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 .app-wrapper {
-  background-color: #fff;
-  min-width: 350px;
-  min-height: 550px;
-  padding: 30px;
-  box-sizing: border-box;
-  border-radius: 5px;
-  align-items: center;
-  justify-content: center;
-  margin-top: 20px;
+	background-color: #fff;
+	min-width: 350px;
+	min-height: 550px;
+	padding: 30px;
+	box-sizing: border-box;
+	border-radius: 5px;
+	align-items: center;
+	justify-content: center;
+	margin-top: 20px;
 }
 .title {
-  color: #f80759;
-  text-align: center;
-  margin: 20px 0px 20px 0px;
+	color: #f80759;
+	text-align: center;
+	margin: 20px 0px 20px 0px;
 }
 .password,
 .email {
-  margin: 20px;
-  font-size: 16px;
+	margin: 20px;
+	font-size: 16px;
 }
 .password {
-  margin-bottom: 30px;
+	margin-bottom: 30px;
 }
 .input {
-  height: 30px;
-  font-size: 18px;
-  outline: none;
-  width: 100%;
-  border-top-style: none;
-  border-left-style: none;
-  border-right-style: none;
-  border-bottom-style: 2px solid black;
-  margin-bottom: 10px;
+	height: 30px;
+	font-size: 18px;
+	outline: none;
+	width: 100%;
+	border-top-style: none;
+	border-left-style: none;
+	border-right-style: none;
+	border-bottom-style: 2px solid black;
+	margin-bottom: 10px;
 }
 .error {
-  color: red;
-  font-size: small;
+	color: red;
+	font-size: small;
 }
 .submit {
-  display: flex;
-  text-transform: uppercase;
-  font-size: 20px;
-  border-radius: 25px;
-  color: white;
-  padding: 10px 60px;
-  margin: auto;
-  outline: none;
-  border: none;
-  cursor: pointer;
-  transition: all 0.1s;
-  background-color: red;
-  margin-top: 30px;
+	display: flex;
+	text-transform: uppercase;
+	font-size: 20px;
+	border-radius: 25px;
+	color: white;
+	padding: 10px 60px;
+	margin: auto;
+	outline: none;
+	border: none;
+	cursor: pointer;
+	transition: all 0.1s;
+	background-color: red;
+	margin-top: 30px;
 }
 button:active {
-  transform: translateY(2px);
+	transform: translateY(2px);
 }
 .form-success {
-  display: flex;
-  justify-content: center;
-  margin-top: 250px;
-  min-width: 370px;
-  color: #f80759;
+	display: flex;
+	justify-content: center;
+	margin-top: 250px;
+	min-width: 370px;
+	color: #f80759;
 }
 
-.buttonRedireact{
-  position: absolute;
-  right: 30px;
-  top: 30px;
+.buttonRedireact {
+	position: absolute;
+	right: 30px;
+	top: 30px;
 }
