@@ -82,3 +82,14 @@ button:active {
 	right: 30px;
 	top: 30px;
 }
+
+.avatar {
+	max-width: 50px;
+	max-height: 50px;
+	border-radius: 50%;
+}
+
+.small-text {
+	font-size: 12px!important;
+	color: #333333!important;
+}

@@ -1,6 +1,6 @@
 import Navbar from "./Navbar";
 
-function Homepage(){
+function Header(){
     return (
         <div>
           <Navbar />
@@ -8,4 +8,4 @@ function Homepage(){
     );
 }
 
-export default Homepage;
+export default Header;
