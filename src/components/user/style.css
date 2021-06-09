@@ -1,0 +1,133 @@
+.App {
+  margin-top: 25px;
+  justify-content: center;
+  font-family: "Roboto", sans-serif;
+  margin-bottom: 20px;
+}
+
+.cardContainer {
+  border: 1px solid #ececec;
+  border-radius: 5px;
+  width: 30%;
+  margin-left: 38px;
+  margin-bottom: 20px;
+}
+
+.Header {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ececec;
+  padding: 5px 0 5px 10px;
+}
+
+.Header-text {
+  text-align: center;
+  padding: 0;
+  line-height: 0.2;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.Header-text p {
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+}
+
+.Header-text p:nth-child(1) {
+  font-size: 15px;
+}
+
+.Header-text p:nth-child(2) {
+  font-size: 10px;
+  color: #bbbbbb;
+}
+
+.Header .profile-div img {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+}
+
+.Post .icon-section {
+  padding: 0 0 0 10px;
+}
+
+.Post .icon-section img {
+  width: 30px;
+}
+
+.Post .icon-section .icons {
+  display: flex;
+  font-size: 25px;
+}
+
+.Post .Post-image-div {
+  border: 1px solid #ececec;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.Post .Post-image-div img {
+  width: 100%;
+}
+
+.CommentSection {
+  width: 100%;
+}
+
+.comment-input {
+  display: flex;
+  margin: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+}
+
+.CommentSection .comment-input input {
+  width: 100%;
+  margin: 5px 0 5px 10px;
+  border: none;
+  background-color: #f0f0f0;
+  outline: none;
+  font-size: 1em;
+}
+
+.CommentSection .comment-input input::placeholder {
+  color: #b8b8b8;
+  font-size: 15px;
+}
+
+.CommentSection .comment-input button {
+  padding: 5px;
+  font-size: 1rem;
+  border: 0;
+  background-color: #f0f0f0;
+  outline: none;
+}
+
+.CommentSection .comments-section {
+  border-bottom: 1px solid #ececec;
+  margin: 0;
+  padding: 0;
+}
+.CommentSection .comments-section .single-comment {
+  display: flex;
+  /* padding: 5px 0 5px 10px; */
+  padding: 0 0 0 10px;
+  margin: 0;
+  border-bottom: 1px solid #ececec;
+}
+.CommentSection .comments-section .single-comment p:nth-child(1) {
+  margin-right: 10px;
+  font-weight: bold;
+  font-family: "Roboto 300", sans-serif;
+}
+.CommentSection .comments-section .single-comment p:nth-child(2) {
+  margin-right: 10px;
+  font-family: sans-serif;
+}

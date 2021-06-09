@@ -2,7 +2,7 @@ import './App.css';
 import SignUp from './components/SignUp'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import PostDetail from './components/post/detail/PostDetail';
-import Header from './components/Header';
+import Homepage from './components/user/Homepage';
 import Admin from './components/admin/Admin';
 import SignIn from './components/SignIn';
 
@@ -16,7 +16,7 @@ function App() {
         <Route path="/admin" component={Admin} />
 
         <Route exact path="/post/detail" component={PostDetail} />
-        <Route exact path="/home" component={Header} />
+        <Route exact path="/home" component={Homepage} />
       </Switch>
     </Router>
   );
