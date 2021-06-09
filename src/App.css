@@ -93,3 +93,43 @@ button:active {
 	font-size: 12px!important;
 	color: #333333!important;
 }
+
+/* css Post */
+.image {
+	height: 50px;
+	width: 50px;
+	border-radius: 25px;
+	margin-right: 10px;
+  }
+.container2 {
+	border-style: solid;
+  	border-width: 1px;
+	border-radius: 5px;
+	border-color: #999999;
+	margin-top: 20px;
+	margin-left: 200px;
+	/* width: 500px; */
+	min-height: 400px;
+	width: 700px;
+	padding: 20px;
+  }
+  .header_content {
+	display: flex;
+	flex-direction: row;
+	
+  }
+  .text_Post{
+	  margin-left: 5px;
+  }
+  .text_style{
+	  margin-bottom: 0px;
+  }
+  .imagePost {
+	height: 400px; 
+	width: 100%; 
+  }
+  .text_content {
+	text-align: left;
+	/* justify-content: center; */
+  }
+  
