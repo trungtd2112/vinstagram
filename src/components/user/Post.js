@@ -1,6 +1,8 @@
-import React, { Component } from "react";
-
+import history from "history"
+import { useHistory } from 'react-router-dom';
 function Post({toukou}){
+  const history = useHistory();
+  
   return (
     <div>
       <div className="Post">
@@ -9,6 +11,7 @@ function Post({toukou}){
           <img
             src={toukou.imageURL}
             alt="post img"
+            onClick={() => {history.push("/post/"+toukou._id)}}
           />
         </div>
       </div>
