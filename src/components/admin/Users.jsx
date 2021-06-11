@@ -1,17 +1,32 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
+import axios from 'axios';
 
 function Users(props) {
-  const [users, setUsers] = useState([
-    { id: 1, username: "aaaa", email: "aa@aa.com", password: "bbbb" },
-    { id: 2, username: "aaaa", email: "aa@aa.com", password: "bbbb" },
-    { id: 3, username: "aaaa", email: "aa@aa.com", password: "bbbb" },
-    { id: 4, username: "aaaa", email: "aa@aa.com", password: "bbbb" },
-    { id: 5, username: "aaaa", email: "aa@aa.com", password: "bbbb" },
-  ]);
+  const [users, setUsers] = useState([]);
 
-  const handleDeleteUser = id => {
-    setUsers(users.filter(user => user.id !== id));
+  useEffect(() => {
+    (async () => {
+      try {
+        const response = await axios.get('https://sheltered-coast-77536.herokuapp.com/api/users');
+        if (response.status === 200) {
+          setUsers(response.data.users);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, []);
+
+  const handleDeleteUser = async _id => {
+    try {
+      const response = await axios.delete(`https://sheltered-coast-77536.herokuapp.com/api/users/${_id}`);
+      if (response.status === 200) {
+        setUsers(users.filter(user => user._id !== _id));
+      }
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
@@ -21,7 +36,6 @@ function Users(props) {
         <table className="table table-striped table-hover">
           <thead>
             <tr>
-              <th>Num</th>
               <th>Username</th>
               <th>Email</th>
               <th>Password</th>
@@ -30,9 +44,8 @@ function Users(props) {
           </thead>
           <tbody>
             {
-              users.map(({ id, username, email, password }) => (
-                <tr key={id}>
-                  <td>{id}</td>
+              users.map(({ _id, username, email, password }) => (
+                <tr key={_id}>
                   <td>{username}</td>
                   <td>{email}</td>
                   <td>{password}</td>
@@ -40,7 +53,7 @@ function Users(props) {
                     <button 
                       type="button" 
                       className="btn btn-danger"
-                      onClick={e => handleDeleteUser(id)}
+                      onClick={e => handleDeleteUser(_id)}
                     >
                       Delete
                     </button>

@@ -21,8 +21,14 @@ const SignUp = () => {
         try {
             const response = await axios.post('https://sheltered-coast-77536.herokuapp.com/api/auth/login', values);
             if (response.status === 200) {
+                console.log(response.data.user)
                 setUserDetail(response.data.user);
-                history.push('/home');
+                if (response.data.user.role === 0) {
+                    history.push('/admin');
+                }
+                else {
+                    history.push('/home');
+                }
             }
         } catch (error) {
             console.log(error);
