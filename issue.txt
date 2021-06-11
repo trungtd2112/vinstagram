@@ -1,0 +1,11 @@
+Trong src\components\post\DetailPost.js có gọi API để lấy chi tiết 1 post trong useEffect
+nhưng API này tốn time nên chưa có response trả về thì nó đã render ra thẻ Card và CommentSection
+nên props truyền vào các thẻ này bị báo lỗi ko tồn tại, chưa khai báo
+
+url trang lỗi: "post/:id". ông vào home xong bấm vào 1 cái ảnh bất kỳ là đc
+
+Cách tái tạo trường hợp lỗi:
+- Nếu comment 2 thẻ Card và CommentSection rồi reload trang, 
+    thì sẽ thấy sau khoảng 2,3s thì console.log mới in ra dữ liệu response
+- Sau khi console.log in ra thì tức là đã có dữ liệu, bỏ comment 2 thẻ sẽ thấy render ra được
+ => render chạy trước khi useEffect chạy xong => cần có giải pháp để API chạy xong mới render (useEffect ko làm đc) 
