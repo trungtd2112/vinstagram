@@ -16,12 +16,12 @@
 .Header {
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #ececec;
+  /*border-bottom: 1px solid #ececec;*/
   padding: 5px 0 5px 10px;
 }
 
 .Header-text {
-  text-align: center;
+  text-align: flex-start!important;
   padding: 0;
   line-height: 0.2;
   margin-left: 10px;
@@ -29,11 +29,11 @@
 }
 
 .Header-text p {
-  text-align: center;
   font-family: "Roboto", sans-serif;
 }
 
 .Header-text p:nth-child(1) {
+  margin-top: 5px;
   font-size: 15px;
 }
 
@@ -65,7 +65,7 @@
 }
 
 .Post .Post-image-div {
-  border: 1px solid #ececec;
+  /*border: 1px solid #ececec;*/
   box-sizing: border-box;
   width: 100%;
   padding: 0;
@@ -130,4 +130,8 @@
 .CommentSection .comments-section .single-comment p:nth-child(2) {
   margin-right: 10px;
   font-family: sans-serif;
+}
+
+.caption{
+  padding-left: 8px;
 }
