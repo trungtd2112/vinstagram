@@ -1,25 +1,65 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import validation from './validation';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import PathString from '../constants/PathString';
+import axios from 'axios';
+import { UserContext } from '../contexts/userContext';
+
+const convertBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+        const fileReader = new FileReader();
+        fileReader.readAsDataURL(file)
+        fileReader.onload = () => {
+            resolve(fileReader.result);
+            }
+        fileReader.onerror = (error) => {
+            reject(error);
+            }
+    })
+}
+
 const SignUp = () => {
     const [values, setValues] = useState({
+        username: "",
         email: "",
         password: "",
         repassword: "",
-        image: "",
-
+        avatar: null,
     });
     const [errors, setErrors] = useState({});
-    const handleForm = (event) => {
+    const { setUserDetail } = useContext(UserContext);
+    const history = useHistory();
+
+    const handleForm = async (event) => {
         event.preventDefault();
         setErrors(validation(values));
+        console.log(values)
+
+        try {
+            const response = await axios.post('https://sheltered-coast-77536.herokuapp.com/api/auth/register', values);
+            console.log(response.data);
+            setUserDetail(response.data.user);
+            history.push('/home');
+        } catch (error) {
+            console.log(error);
+        }
     };
     const handleChange = (event) => {
         setValues({
             ...values,
             [event.target.name]: event.target.value,
         })
+    }
+
+    const handleUploadImage = async event => {
+        if (event.target.files && event.target.files[0]) {
+            let img = event.target.files[0];
+            const base64 = await convertBase64(img);
+            setValues({
+                ...values,
+                avatar: base64,
+            });
+        }
     }
     return (
         <div className="container1">
@@ -33,6 +73,17 @@ const SignUp = () => {
                         <h2 className="title">Vinstagram</h2>
                     </div>
                     <form className="form-wrapper">
+                        <div className="email">
+                            <label className="label">ユーザー名</label>
+                            <input 
+                                className="input" 
+                                type="text" 
+                                name="username"
+                                value={values.username} 
+                                onChange={handleChange}
+                            />
+                            {errors.email && <p className="error">{errors.email}</p>}
+                        </div>
                         <div className="email">
                             <label className="label">メール</label>
                             <input 
@@ -74,9 +125,8 @@ const SignUp = () => {
                             <input
                                 className="input"   
                                 type="file" 
-                                name="image"
-                                value={values.image} 
-                                onChange={handleChange}
+                                name="avatar"
+                                onChange={handleUploadImage}
                             />
                             {errors.image && <p className="error">{errors.image}</p>}
                         </div>

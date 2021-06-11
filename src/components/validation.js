@@ -7,14 +7,11 @@ const validation = (values) => {
     }
     if(!values.password) {
         errors.password="Password is required"
-    } else if(values.password.length < 8) {
-        errors.password = "Password must be more than eight characters"
+    } else if(values.password.length < 3) {
+        errors.password = "Password must be more than three characters"
     }
     if(values.repassword !== values.password){
         errors.repassword = "password not match"
-    }
-    if(values.image && !values.image.match(/\.(jpg|jpeg|png|gif)$/) ) {
-        errors.image = "Please select valid image"
     }
     return errors;
 };
