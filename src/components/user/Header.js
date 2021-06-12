@@ -1,37 +1,20 @@
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
 
-function Header(){
-    const date = new Date();
-    const months = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December"
-    ];
+function Header({user, post}){
+    var date = post.createdAt.toString().slice(0,10);
 
-    const fullDay = `${
-      months[date.getMonth()]
-    } ${date.getDate()}, ${date.getFullYear()}`;
     return (
       <div className="Header">
         <div className="profile-div">
           <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Lil_Pump_mugshot.jpg/250px-Lil_Pump_mugshot.jpg"
+            src={user.avatar}
             alt="profilepic"
           />
         </div>
 
         <div className="Header-text">
-          <p>Lil Pump</p>
-          <p>{fullDay}</p>
+          <p>{user.username}</p>
+          <p>{date}</p>
         </div>
       </div>
     );

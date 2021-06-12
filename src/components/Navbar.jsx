@@ -1,8 +1,10 @@
-import React, {useState, useEffect, Fragment} from 'react'
+import React, {useState, useEffect, useContext, Fragment} from 'react'
 import PropTypes from 'prop-types'
 
 import logo from "../images/logo.png";
 import searchIcon from "../images/loupe.png";
+import { UserContext } from '../contexts/userContext';
+import { useHistory } from 'react-router';
 
 import axios from 'axios';
 import { TextField, Icon } from '@material-ui/core';
@@ -11,12 +13,11 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import { useHistory } from 'react-router-dom';
 
 function Navbar(props) {
-
+  const { userState: { user } } = useContext(UserContext);
   const [options, setOptions] = useState([]);
   const [selected, setSelected] = useState({});
 
   const history = useHistory();
-
   const URL = "https://sheltered-coast-77536.herokuapp.com/api/";
   
   const avatarStyles = {
@@ -25,7 +26,6 @@ function Navbar(props) {
     maxHeight : "50px",
     borderRadius : "50%"
   }
-
   // const fetchAllData = async(url) => {
   //   await axios.get(url).then((res) => {
   //     if (res.data.users) {
@@ -105,6 +105,10 @@ function Navbar(props) {
       return <AccountCircle color="secondary" />
     }
     else return <Collections color="secondary" />
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+    history.push('/');
   }
   
   return (
@@ -112,14 +116,14 @@ function Navbar(props) {
       <div className="container-fluid">
         <ul className="nav navbar-nav">
           <li className="nav-item">
-            <img src={logo} width={120} height={40} />
+            <img src={logo} alt="logo" width={120} height={40} />
           </li>
         </ul>
         <ul className="nav navbar-nav mx-auto">
           <form className="form-inline">
             <div className="input-group">
               <div className="input-group-prepend">
-                <span className="input-group-text" id="basic-addon1"><img src={searchIcon} width={20} height={20}/></span>
+                <span className="input-group-text" id="basic-addon1"><img src={searchIcon} alt="search" width={20} height={20}/></span>
               </div>
               <Autocomplete
                 style={{ width: 400 }}
@@ -166,9 +170,9 @@ function Navbar(props) {
         </ul>
         <ul className="nav navbar-nav">
           <li className="nav-item">
-            <img src="https://img4.thuthuatphanmem.vn/uploads/2020/03/23/nhung-hinh-anh-dep-nhat-cua-rose-black-pink-trong-nam-2020_051300950.jpg" className="avatar"/>
+            <img src={`${user?.avatar}`} alt="avatar" className="avatar"/>
             <br/>
-            <a href="#" className="small-text">ログアウト</a>
+            <a href="#" className="small-text" onClick={handleLogout}>ログアウト</a>
           </li>
         </ul>
       </div>

@@ -1,18 +1,38 @@
-import React, {useState} from 'react';
-import validation from './validation';
-import {BrowserRouter, Redirect, Route, Switch, Link} from 'react-router-dom';
+import axios from 'axios';
+import React, { useContext, useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import PathString from '../constants/PathString';
+import { UserContext } from '../contexts/userContext';
+import validation from './validation';
 
 const SignUp = () => {
     const [values, setValues] = useState({
         email: "",
         password: "",
-
     });
     const [errors, setErrors] = useState({});
-    const handleForm = (event) => {
+    const { setUserDetail } = useContext(UserContext);
+
+    const history = useHistory();
+    const handleForm = async (event) => {
         event.preventDefault();
         setErrors(validation(values));
+
+        try {
+            const response = await axios.post('https://sheltered-coast-77536.herokuapp.com/api/auth/login', values);
+            if (response.status === 200) {
+                console.log(response.data.user)
+                setUserDetail(response.data.user);
+                if (response.data.user.role === 0) {
+                    history.push('/admin');
+                }
+                else {
+                    history.push('/home');
+                }
+            }
+        } catch (error) {
+            console.log(error);
+        }
     };
     const handleChange = (event) => {
         setValues({
@@ -57,7 +77,7 @@ const SignUp = () => {
                         </div>
                         <div className="password">
                             <input type="checkbox" name="account" value="Bike"></input>
-                            <label for="account"> アカウントを覚える</label><br></br>
+                            <label htmlFor="account"> アカウントを覚える</label><br></br>
                         </div>
                         <div>
                             <button className="submit" onClick={handleForm}>

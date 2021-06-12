@@ -5,20 +5,23 @@ import PostDetail from './components/post/detail/PostDetail';
 import Homepage from './components/user/Homepage';
 import Admin from './components/admin/Admin';
 import SignIn from './components/SignIn';
+import UserContextProvider from './contexts/userContext';
 
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/" component={SignIn} />
-        <Route exact path="/SignUp" component={SignUp} />
+    <UserContextProvider>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={SignIn} />
+          <Route exact path="/SignUp" component={SignUp} />
 
-        <Route path="/admin" component={Admin} />
+          <Route path="/admin" component={Admin} />
 
-        <Route exact path="/post/detail" component={PostDetail} />
-        <Route exact path="/home" component={Homepage} />
-      </Switch>
-    </Router>
+          <Route exact path="/post/detail" component={PostDetail} />
+          <Route exact path="/home" component={Homepage} />
+        </Switch>
+      </Router>
+    </UserContextProvider>
   );
 }
 
