@@ -1,16 +1,16 @@
 .cardContainer {
-    margin-left: 260px;
-    margin-top: 20px;
-    position: relative;
+  margin-left: 260px;
+  margin-top: 20px;
+  position: relative;
 }
 
-.form-inline{
-    transform: translateY(-12%);
+.form-inline {
+  transform: translateY(-12%);
 }
 
-.CommentSection {
+/* .CommentSection {
     width: 290px;
     position: absolute;
     top: 14%;
     right: 27%;
-}
+} */

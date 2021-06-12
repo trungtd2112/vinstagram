@@ -1,9 +1,9 @@
 import Navbar from "./Navbar";
 
-function Header(){
+function Header(props){
     return (
         <div>
-          <Navbar />
+          <Navbar onNavbarSearch={props.onSearch}/>
         </div>
     );
 }

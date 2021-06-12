@@ -1,11 +1,10 @@
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
-import SignUp from './components/SignUp'
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import PostDetail from './components/post/detail/PostDetail';
-import Homepage from './components/user/Homepage';
 import Admin from './components/admin/Admin';
-import SignIn from './components/SignIn';
 import DetailPost from './components/post/DetailPost';
+import SignIn from './components/SignIn';
+import SignUp from './components/SignUp';
+import Homepage from './components/user/Homepage';
 import UserContextProvider from './contexts/userContext';
 
 function App() {

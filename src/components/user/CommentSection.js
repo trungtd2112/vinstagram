@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { Component } from "react";
 
 class CommentSection extends Component {
@@ -5,26 +6,43 @@ class CommentSection extends Component {
     super(props);
     this.state = {
       userComment: {
-        user: "pedro",
-        comment: ""
+        user: this.props.userComment.username,
+        comment: "",
       },
       input: "",
       disabled: false,
-      comments: [{ user: "iamcardib", comment: "cool post!!!" }]
+      comments: this.props.comments
     };
     this.inputHandler = this.inputHandler.bind(this);
     this.addComment = this.addComment.bind(this);
     this.addCommentHandler = this.addCommentHandler.bind(this);
+    this.postComment = this.postComment.bind(this);
   }
 
   inputHandler(e) {
     this.setState({ input: e.target.value });
   }
 
-  addComment(comment) {
-    const newComment = { ...comment };
+  async postComment(comment) {
+    await axios.post(
+      `https://sheltered-coast-77536.herokuapp.com/api/posts/${this.props.post._id}`,
+      {
+        content: comment.comment,
+        userId: this.props.userComment._id,
+      }
+    );
+  }
+
+  async addComment(comment) {
+    // send comment to server
+    await this.postComment(comment);
     this.setState(prev => ({
-      comments: [...prev.comments, newComment]
+      comments: [...prev.comments, {
+        content: comment.comment,
+        user: {
+          username: comment.user,
+        },
+      }]
     }));
   }
 
@@ -35,14 +53,16 @@ class CommentSection extends Component {
     this.setState({ userComment, input: "" });
     this.addComment(userComment);
   }
+  
   render() {
     return (
       <div className="CommentSection">
         <div className="comments-section">
+          <h4>Comments</h4>
           {this.state.comments.map(c => {
             return (
-              <div className="single-comment">
-                <p>{c.user}</p> <p>{c.comment}</p>
+              <div className="single-comment" key={c._id}>
+                <p>{c.user.username}</p> <p>{c.content}</p>
               </div>
             );
           })}

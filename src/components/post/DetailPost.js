@@ -4,33 +4,42 @@ import Header from "../Header.js";
 import Card from "../user/Card";
 import CommentSection from "../user/CommentSection";
 import "./DetailPost.css";
+import { useParams } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../../contexts/userContext.js";
 
 function DetailPost() {
   const [data, setData] = useState();
-  useEffect(async () => {
-    const currentURL = window.location.href.toString();
-    const n = currentURL.lastIndexOf("/");
-    const postId = currentURL.slice(n + 1);
-    const result = await axios(
-      "https://sheltered-coast-77536.herokuapp.com/api/posts/" + postId
-    );
-    setData(result.data);
-  }, []);
+  const { userState: { user }} = useContext(UserContext);
+  const { id } = useParams();
 
-  console.log(data);
+  useEffect(() => {
+    (async () => {
+      const result = await axios(
+        `https://sheltered-coast-77536.herokuapp.com/api/posts/${id}`
+      );
+      setData(result.data);
+    })();
+  }, []);
 
   return (
     <div>
       <Header />
       <div className="container">
         <div className="row">
-          <Card key={data.post._id} post={data.post} />
+          {
+            data && 
+            <>
+              <Card post={data.post} />
 
-          <CommentSection
-            className="comments-section"
-            key={data.post._id}
-            comments={data.comments}
-          />
+              <CommentSection
+                className="comments-section"
+                post={data.post}
+                userComment={user}
+                comments={data.comments}
+              />
+            </>
+          }
         </div>
       </div>
     </div>

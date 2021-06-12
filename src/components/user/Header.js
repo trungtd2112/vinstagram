@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from "react";
+import React from "react";
 
 function Header({user, post}){
     var date = post.createdAt.toString().slice(0,10);

@@ -1,4 +1,3 @@
-import history from "history"
 import { useHistory } from 'react-router-dom';
 function Post({toukou}){
   const history = useHistory();
