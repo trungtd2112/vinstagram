@@ -26,14 +26,14 @@ function DetailPost() {
     <div>
       <Header />
       <div className="container">
-        <div className="row">
+        <div className="">
           {
             data && 
             <>
               <Card post={data.post} />
 
-              <CommentSection
-                className="comments-section"
+              <CommentSection 
+                className=" re-location"
                 post={data.post}
                 userComment={user}
                 comments={data.comments}

@@ -3,7 +3,7 @@ import { AccountCircle, Collections } from '@material-ui/icons';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import axios from 'axios';
 import React, { Fragment, useContext, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { UserContext } from '../contexts/userContext';
 import logo from "../images/logo.png";
 import searchIcon from "../images/loupe.png";
@@ -64,14 +64,24 @@ function Navbar(props) {
       <div className="container-fluid">
         <ul className="nav navbar-nav">
           <li className="nav-item">
-            <img src={logo} alt="logo" width={120} height={40} onClick={() => history.push('/home')} />
+            <Link to="/home">
+              <img
+                src={logo}
+                alt="logo"
+                width={120}
+                height={40}
+                onClick={() => history.push("/home")}
+              />
+            </Link>
           </li>
         </ul>
         <ul className="nav navbar-nav mx-auto">
           <form className="form-inline">
             <div className="input-group">
               <div className="input-group-prepend">
-                <span className="input-group-text" id="basic-addon1"><img src={searchIcon} alt="search" width={20} height={20}/></span>
+                <span className="input-group-text" id="basic-addon1">
+                  <img src={searchIcon} alt="search" width={20} height={20} />
+                </span>
               </div>
               <Autocomplete
                 style={{ width: 400 }}
@@ -86,10 +96,10 @@ function Navbar(props) {
                     return true;
                   }
                 }}
-                getOptionLabel={option => {
+                getOptionLabel={(option) => {
                   return option.username ? option.username : option.content;
                 }}
-                renderOption={option => {
+                renderOption={(option) => {
                   return (
                     <Fragment>
                       {renderIcon(option)}
@@ -98,34 +108,41 @@ function Navbar(props) {
                   );
                 }}
                 renderInput={(params) => (
-                  <TextField {...params}
-                    style={{ textAlign: 'center' }}
+                  <TextField
+                    {...params}
+                    style={{ textAlign: "center" }}
                     onChange={getDataFromAPI}
                     variant="outlined"
                     label="Search Box"
                   />
                 )}
                 onChange={(event, newValue) => {
-                  <span>
-                    {setSelected(newValue)}
-                  </span>
+                  <span>{setSelected(newValue)}</span>;
                 }}
                 onKeyDown={handleOnKeyDown}
               />
-              {selected && selected.username ? <img src={selected.avatar} alt="avatar" style={{width: 50, height: 50, borderRadius: 50/2}} /> : null}
+              {selected && selected.username ? (
+                <img
+                  src={selected.avatar}
+                  alt="avatar"
+                  style={{ width: 50, height: 50, borderRadius: 50 / 2 }}
+                />
+              ) : null}
             </div>
           </form>
         </ul>
         <ul className="nav navbar-nav">
           <li className="nav-item">
-            <img src={`${user?.avatar}`} alt="avatar" className="avatar"/>
-            <br/>
-            <a href="#" className="small-text" onClick={handleLogout}>ログアウト</a>
+            <img src={`${user?.avatar}`} alt="avatar" className="avatar" />
+            <br />
+            <a href="#" className="small-text" onClick={handleLogout}>
+              ログアウト
+            </a>
           </li>
         </ul>
       </div>
     </nav>
-  )
+  );
 }
 
 Navbar.propTypes = {

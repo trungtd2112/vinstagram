@@ -1,14 +1,50 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
+import axios from "axios";
 
 function Posts(props) {
-  const [users, setUsers] = useState([
-    { id: 1, username: "aaaa", email: "aa@aa.com", password: "bbbb" },
-    { id: 2, username: "aaaa", email: "aa@aa.com", password: "bbbb" },
-    { id: 3, username: "aaaa", email: "aa@aa.com", password: "bbbb" },
-    { id: 4, username: "aaaa", email: "aa@aa.com", password: "bbbb" },
-    { id: 5, username: "aaaa", email: "aa@aa.com", password: "bbbb" },
-  ]);
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const response = await axios.get(
+          "https://sheltered-coast-77536.herokuapp.com/api/posts"
+        );
+        if (response.status === 200) {
+          setPosts(response.data.posts);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, []);
+
+  const handleDeleteUser = async (_id) => {
+    try {
+      const response = await axios.delete(
+        `https://sheltered-coast-77536.herokuapp.com/api/posts/${_id}`
+      );
+      if (response.status === 200) {
+        setPosts(posts.filter((post) => post._id !== _id));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleDeletePost = async (_id) => {
+    try {
+      const response = await axios.delete(
+        `https://sheltered-coast-77536.herokuapp.com/api/posts/${_id}`
+      );
+      if (response.status === 200) {
+        setPosts(posts.filter((post) => post._id !== _id));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   
   return (
     <div>
@@ -17,38 +53,37 @@ function Posts(props) {
         <table className="table table-striped table-hover">
           <thead>
             <tr>
-              <th>Num</th>
-              <th>Username</th>
-              <th>Email</th>
-              <th>Password</th>
+              <th>Content</th>
+              <th>Creater</th>
+              <th>Date</th>
+              {/* <th>Password</th> */}
               <th>Delete</th>
             </tr>
           </thead>
           <tbody>
-            {
-              users.map(({ id, username, email, password }) => (
-                <tr key={id}>
-                  <td>{id}</td>
-                  <td>{username}</td>
-                  <td>{email}</td>
-                  <td>{password}</td>
+            {posts &&
+              posts.map((post) => (
+                <tr key={post._id}>
+                  <td>{post.content}</td>
+                  <td>{post.user.username}</td>
+                  <td>{post.createdAt}</td>
+                  {/* <td>{password}</td> */}
                   <td>
-                    <button 
-                      type="button" 
+                    <button
+                      type="button"
                       className="btn btn-danger"
-                      // onClick={}
+                      onClick={(e) => handleDeletePost(post._id)}
                     >
                       Delete
                     </button>
                   </td>
                 </tr>
-              ))
-            }
+              ))}
           </tbody>
         </table>
       </div>
     </div>
-  )
+  );
 }
 
 Posts.propTypes = {

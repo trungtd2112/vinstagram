@@ -4,13 +4,10 @@
   position: relative;
 }
 
-.form-inline {
-  transform: translateY(-12%);
-}
-
-/* .CommentSection {
-    width: 290px;
+.CommentSection {
+    width: 380px!important;
+    /* float: right; */
     position: absolute;
-    top: 14%;
-    right: 27%;
-} */
+    top: 15%;
+    right: 30%;
+}
