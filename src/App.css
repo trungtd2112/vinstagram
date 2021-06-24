@@ -14,7 +14,7 @@
 }
 .app-wrapper {
   background-color: #fff;
-  min-width: 350px;
+  min-width: 500px;
   min-height: 550px;
   padding: 30px;
   box-sizing: border-box;
@@ -107,5 +107,13 @@ button:active {
   text-align: left;
   /* justify-content: center; */
 }
-
+#lang {
+  width: 100px;
+  margin-left: 20px;
+}
+.alert {
+  background-color: blue;
+  width: 200px;
+  height: 50px;
+}
 
